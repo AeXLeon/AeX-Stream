@@ -122,11 +122,8 @@
       const validPassword = 'Password';
 
       if (validEmails.includes(email) && password === validPassword) {
-        // Speichere Login-Status im Local Storage
-        localStorage.setItem('loggedIn', 'true');
-        
         // Weiterleitung auf das Dashboard
-        window.location.href = 'dashboard.html'; 
+        window.location.href = 'dashboard.html';  // Dashboard-Seite
       } else {
         alert('Ungültige E-Mail oder Passwort.');
       }
