@@ -5,42 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - AeX-Streams</title>
   <style>
-    /* Hier kommen alle bisherigen Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #007acc;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: fixed;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+
+    .menu-item {
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .menu-item:hover {
+      background-color: #005fa3;
+    }
+
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .menu-item:active {
+      background-color: #003c6b;
+    }
   </style>
 </head>
 <body>
 
-  <script>
-    // Überprüfen, ob der Benutzer eingeloggt ist
-    if (localStorage.getItem('loggedIn') !== 'true') {
-      // Falls nicht, weiterleiten zur Login-Seite
-      window.location.href = 'index.html';
-    }
-  </script>
-
-  <!-- Dashboard Inhalt hier -->
-  <div class="menu">
-    <h2>AeX Streams</h2>
-    <a href="#">Home</a>
-    <a href="#">Einstellungen</a>
-    <a href="#">Statistiken</a>
-    <a href="#">Support</a>
-    <a href="index.html" onclick="logout()">Abmelden</a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>AeX Streams Dashboard</h2>
+    <div class="menu-item">Home</div>
+    <div class="menu-item">Einstellungen</div>
+    <div class="menu-item">Support</div>
   </div>
 
-  <div class="content">
-    <h1>Willkommen im Dashboard</h1>
-    <p>Hier kannst du deine Einstellungen und Statistiken einsehen.</p>
-    <p>Wähle im Menü auf der linken Seite eine Option aus, um mit der Verwaltung fortzufahren.</p>
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Willkommen im Dashboard!</h1>
+    <p>Hier findest du alle wichtigen Informationen und Funktionen.</p>
   </div>
-
-  <script>
-    // Logout-Funktion
-    function logout() {
-      // Entfernen des Login-Status aus dem Local Storage
-      localStorage.removeItem('loggedIn');
-    }
-  </script>
 
 </body>
 </html>
