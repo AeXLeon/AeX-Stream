@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - AeX-Streams</title>
+  <title>AeX-Streams - Anmeldung & Dashboard</title>
   <style>
     * {
       margin: 0;
@@ -15,9 +15,78 @@
       font-family: Arial, sans-serif;
       display: flex;
       height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Linkes Menü */
+    /* Login Container */
+    .login-container {
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .login-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .input-field {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #333;
+      transition: border-color 0.3s;
+    }
+
+    .input-field input:focus {
+      border-color: #007acc;
+      outline: none;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #007acc;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #005fa3;
+    }
+
+    .top-right {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* Dashboard Style */
+    .dashboard-container {
+      display: none;
+      flex-direction: row;
+      width: 100%;
+    }
+
     .menu {
       width: 250px;
       background-color: #007acc;
@@ -41,26 +110,84 @@
       padding-left: 10px;
     }
 
-    /* Hauptinhalt */
     .content {
       flex: 1;
       padding: 20px;
+    }
+
+    .content h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 18px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <div class="menu">
-    <a href="#">Home</a>
-    <a href="#">Profile</a>
-    <a href="#">Settings</a>
-    <a href="#">Logout</a>
+  <!-- Login Container -->
+  <div class="login-container" id="loginContainer">
+    <h1>Anmelden</h1>
+    <form id="loginForm">
+      <div class="input-field">
+        <input type="email" id="email" placeholder="Email" required>
+      </div>
+      <div class="input-field">
+        <input type="password" id="password" placeholder="Passwort" required>
+      </div>
+      <button type="submit" class="login-btn">Anmelden</button>
+    </form>
   </div>
 
-  <div class="content">
-    <h1>Willkommen im Dashboard!</h1>
-    <p>Hier kannst du deine Einstellungen verwalten.</p>
+  <!-- Top Right "AeX Streams" -->
+  <div class="top-right">AeX Streams</div>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container" id="dashboardContainer">
+    <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">Profile</a>
+      <a href="#">Settings</a>
+      <a href="#">Logout</a>
+    </div>
+    <div class="content">
+      <h1>Willkommen im Dashboard!</h1>
+      <p>Hier kannst du deine Einstellungen verwalten.</p>
+    </div>
   </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value.toLowerCase();
+      const password = document.getElementById('password').value;
+
+      // Überprüfen der Anmeldedaten
+      const validEmails = [
+        'leon.eiswirth@outlook.de',
+        'leon.eiswirth@outlook.de',
+        'leon.eiswirth@outlook.de',
+        'leon.eiswirth@outlook.de'
+      ];
+      const validPassword = 'Password';
+
+      if (validEmails.includes(email) && password === validPassword) {
+        // Zeige das Dashboard und verstecke das Login-Formular
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('dashboardContainer').style.display = 'flex';
+      } else {
+        alert('Ungültige E-Mail oder Passwort.');
+      }
+    });
+  </script>
 
 </body>
 </html>
