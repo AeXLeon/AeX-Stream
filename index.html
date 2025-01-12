@@ -83,8 +83,9 @@
     /* Dashboard Style */
     .dashboard-container {
       display: none;
-      flex-direction: row;
       width: 100%;
+      height: 100%;
+      display: flex;
     }
 
     .menu {
@@ -95,6 +96,8 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
     }
 
     .menu a {
@@ -112,7 +115,9 @@
 
     .content {
       flex: 1;
-      padding: 20px;
+      padding: 30px;
+      background-color: #f4f4f4;
+      height: 100%;
     }
 
     .content h1 {
@@ -124,6 +129,25 @@
       font-size: 18px;
     }
 
+    .section {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* Keyframes for animations */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -153,13 +177,27 @@
   <div class="dashboard-container" id="dashboardContainer">
     <div class="menu">
       <a href="#">Home</a>
-      <a href="#">Profile</a>
-      <a href="#">Settings</a>
-      <a href="#">Logout</a>
+      <a href="#">Profil</a>
+      <a href="#">Einstellungen</a>
+      <a href="#">Abmelden</a>
     </div>
     <div class="content">
       <h1>Willkommen im Dashboard!</h1>
-      <p>Hier kannst du deine Einstellungen verwalten.</p>
+      
+      <div class="section">
+        <h2>Aktuelle Statistiken</h2>
+        <p>Hier kannst du die aktuellen Daten und Statistiken sehen.</p>
+      </div>
+      
+      <div class="section">
+        <h2>Letzte Aktivitäten</h2>
+        <p>Überblick über deine letzten Aktivitäten und Änderungen im Dashboard.</p>
+      </div>
+      
+      <div class="section">
+        <h2>Benachrichtigungen</h2>
+        <p>Wichtige Benachrichtigungen und Updates zu deinen Daten.</p>
+      </div>
     </div>
   </div>
 
@@ -188,6 +226,10 @@
       }
     });
   </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
