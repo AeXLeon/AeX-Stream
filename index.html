@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anmeldung - AeX-Streams</title>
+  <title>Dashboard - AeX-Streams</title>
   <style>
     * {
       margin: 0;
@@ -13,92 +13,54 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: white;
       display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-      position: relative;
     }
 
-    .login-container {
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .login-container h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .input-field {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-
-    .input-field input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 14px;
-      color: #333;
-      transition: border-color 0.3s;
-    }
-
-    .input-field input:focus {
-      border-color: #007acc;
-      outline: none;
-    }
-
-    .login-btn {
-      width: 100%;
-      padding: 12px;
+    /* Linkes Menü */
+    .menu {
+      width: 250px;
       background-color: #007acc;
-      border: none;
-      border-radius: 4px;
       color: white;
-      font-size: 16px;
-      cursor: pointer;
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 0;
+      font-size: 18px;
       transition: background-color 0.3s;
     }
 
-    .login-btn:hover {
+    .menu a:hover {
       background-color: #005fa3;
+      padding-left: 10px;
     }
 
-    .top-right {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 14px;
-      color: #333;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    /* Hauptinhalt */
+    .content {
+      flex: 1;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="top-right">AeX Streams</div>
-  <div class="login-container">
-    <h1>Anmelden</h1>
-    <form>
-      <div class="input-field">
-        <input type="email" placeholder="Email" required>
-      </div>
-      <div class="input-field">
-        <input type="password" placeholder="Passwort" required>
-      </div>
-      <button type="submit" class="login-btn">Anmelden</button>
-    </form>
+
+  <div class="menu">
+    <a href="#">Home</a>
+    <a href="#">Profile</a>
+    <a href="#">Settings</a>
+    <a href="#">Logout</a>
   </div>
+
+  <div class="content">
+    <h1>Willkommen im Dashboard!</h1>
+    <p>Hier kannst du deine Einstellungen verwalten.</p>
+  </div>
+
 </body>
 </html>
