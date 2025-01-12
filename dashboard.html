@@ -5,92 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - AeX-Streams</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      height: 100vh;
-      position: relative;
-      margin-left: 200px;
-    }
-
-    .menu {
-      width: 200px;
-      background-color: #333;
-      color: white;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      padding: 20px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu h2 {
-      color: white;
-      margin-bottom: 20px;
-    }
-
-    .menu a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 10px;
-      margin: 10px 0;
-      background-color: #444;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-
-    .menu a:hover {
-      background-color: #555;
-    }
-
-    .content {
-      padding: 20px;
-      width: calc(100% - 240px);
-      margin-left: 240px;
-    }
-
-    .content h1 {
-      color: #333;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .content p {
-      color: #555;
-      font-size: 18px;
-    }
+    /* Hier kommen alle bisherigen Styles */
   </style>
 </head>
 <body>
 
-  <!-- Sidebar Menu -->
+  <script>
+    // Überprüfen, ob der Benutzer eingeloggt ist
+    if (localStorage.getItem('loggedIn') !== 'true') {
+      // Falls nicht, weiterleiten zur Login-Seite
+      window.location.href = 'index.html';
+    }
+  </script>
+
+  <!-- Dashboard Inhalt hier -->
   <div class="menu">
     <h2>AeX Streams</h2>
     <a href="#">Home</a>
     <a href="#">Einstellungen</a>
     <a href="#">Statistiken</a>
     <a href="#">Support</a>
-    <a href="#">Abmelden</a>
+    <a href="index.html" onclick="logout()">Abmelden</a>
   </div>
 
-  <!-- Main Content -->
   <div class="content">
     <h1>Willkommen im Dashboard</h1>
     <p>Hier kannst du deine Einstellungen und Statistiken einsehen.</p>
     <p>Wähle im Menü auf der linken Seite eine Option aus, um mit der Verwaltung fortzufahren.</p>
   </div>
 
+  <script>
+    // Logout-Funktion
+    function logout() {
+      // Entfernen des Login-Status aus dem Local Storage
+      localStorage.removeItem('loggedIn');
+    }
+  </script>
+
 </body>
 </html>
-
