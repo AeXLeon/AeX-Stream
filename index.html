@@ -14,10 +14,11 @@
     body {
       font-family: Arial, sans-serif;
       display: flex;
-      height: 100vh;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
+      background-color: white;
+      margin: 0;
     }
 
     /* Login Container */
@@ -202,6 +203,7 @@
   </div>
 
   <script>
+    // Login-Formular Logik
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
 
