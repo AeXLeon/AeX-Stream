@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anmeldung - AeX-Streams</title>
+  <title>Dashboard - AeX-Streams</title>
   <style>
     * {
       margin: 0;
@@ -13,122 +13,62 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: white;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      position: relative;
+      min-height: 100vh;
     }
 
-    .login-container {
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .login-container h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .input-field {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-
-    .input-field input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 14px;
-      color: #333;
-      transition: border-color 0.3s;
-    }
-
-    .input-field input:focus {
-      border-color: #007acc;
-      outline: none;
-    }
-
-    .login-btn {
-      width: 100%;
-      padding: 12px;
+    .sidebar {
+      width: 250px;
       background-color: #007acc;
-      border: none;
-      border-radius: 4px;
       color: white;
-      font-size: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: fixed;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+
+    .menu-item {
+      padding: 10px;
+      font-size: 18px;
       cursor: pointer;
       transition: background-color 0.3s;
     }
 
-    .login-btn:hover {
+    .menu-item:hover {
       background-color: #005fa3;
     }
 
-    .top-right {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 14px;
-      color: #333;
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+      flex-grow: 1;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .menu-item:active {
+      background-color: #003c6b;
     }
   </style>
 </head>
 <body>
 
-  <!-- Login Container -->
-  <div class="login-container">
-    <h1>Anmelden</h1>
-    <form id="loginForm">
-      <div class="input-field">
-        <input type="email" id="email" placeholder="Email" required>
-      </div>
-      <div class="input-field">
-        <input type="password" id="password" placeholder="Passwort" required>
-      </div>
-      <button type="submit" class="login-btn">Anmelden</button>
-    </form>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>AeX Streams Dashboard</h2>
+    <div class="menu-item">Home</div>
+    <div class="menu-item">Einstellungen</div>
+    <div class="menu-item">Support</div>
   </div>
 
-  <!-- Top Right "AeX Streams" -->
-  <div class="top-right">AeX Streams</div>
-
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const email = document.getElementById('email').value.toLowerCase();
-      const password = document.getElementById('password').value;
-
-      // Überprüfen der Anmeldedaten
-      const validEmails = [
-        'leon.eiswirth@outlook.de',
-        'leon.eiswirth@outlook.de',
-        'leon.eiswirth@outlook.de',
-        'leon.eiswirth@outlook.de'
-      ];
-      const validPassword = 'Password';
-
-      if (validEmails.includes(email) && password === validPassword) {
-        // Weiterleitung auf das Dashboard
-        window.location.href = 'dashboard.html';  // Dashboard-Seite
-      } else {
-        alert('Ungültige E-Mail oder Passwort.');
-      }
-    });
-  </script>
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Willkommen im Dashboard!</h1>
+    <p>Hier findest du alle wichtigen Informationen und Funktionen.</p>
+  </div>
 
 </body>
 </html>
