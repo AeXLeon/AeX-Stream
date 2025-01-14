@@ -26,6 +26,12 @@
       flex-direction: column;
       height: 100vh;
       position: fixed;
+      transform: translateX(-250px);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar:hover {
+      transform: translateX(0);
     }
 
     .sidebar h2 {
@@ -46,9 +52,10 @@
     }
 
     .main-content {
-      margin-left: 250px;
+      margin-left: 0;
       padding: 20px;
       flex-grow: 1;
+      width: 100%;
     }
 
     .menu-item:active {
@@ -68,7 +75,6 @@
   <div class="sidebar">
     <h2>AeX Streams Dashboard</h2>
     <a href="dashboard.html" class="menu-item">Dashboard</a>
-    <a href="home.html" class="menu-item">Home</a>
     <a href="einstellungen.html" class="menu-item">Einstellungen</a>
     <a href="support.html" class="menu-item">Support</a>
   </div>
