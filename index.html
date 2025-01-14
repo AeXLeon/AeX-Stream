@@ -27,6 +27,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       width: 300px;
+      display: none; /* Formular anfangs ausblenden */
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -85,8 +86,61 @@
       100% { opacity: 1; transform: translateY(0); }
     }
   </style>
+  
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script>
+    // Firebase-Konfiguration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAQITIKQsQs3aZCCjkIse1IlPn1kJB-HYI",
+      authDomain: "aex-streams-c31c9.firebaseapp.com",
+      projectId: "aex-streams-c31c9",
+      storageBucket: "aex-streams-c31c9.firebasestorage.app",
+      messagingSenderId: "281680723328",
+      appId: "1:281680723328:web:d690dd6a270220c633d565",
+      measurementId: "G-JTQXWJDJY6"
+    };
+
+    // Firebase initialisieren
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.getAuth(app);
+
+    // Funktion, um das Anmeldeformular anzuzeigen
+    function showLoginForm() {
+      document.querySelector('.login-container').style.display = 'block';
+    }
+
+    // Funktion, um den Benutzer anzumelden
+    function loginUser(email, password) {
+      firebase.signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          // Weiterleitung nach erfolgreichem Login
+          window.location.href = 'dashboard.html';  // Beispielziel
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert('Fehler: ' + errorMessage);
+        });
+    }
+
+    // Formular abschicken und anmelden
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value.toLowerCase();
+      const password = document.getElementById('password').value;
+
+      loginUser(email, password);
+    });
+  </script>
 </head>
 <body>
+
+  <!-- Top Right "AeX Streams" -->
+  <div class="top-right">AeX Streams</div>
 
   <!-- Login Container -->
   <div class="login-container">
@@ -102,33 +156,10 @@
     </form>
   </div>
 
-  <!-- Top Right "AeX Streams" -->
-  <div class="top-right">AeX Streams</div>
-
   <script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const email = document.getElementById('email').value.toLowerCase();
-      const password = document.getElementById('password').value;
-
-      // Überprüfen der Anmeldedaten
-      const validEmails = [
-        'leon.eiswirth@outlook.de',
-        'leon.eiswirth@outlook.de',
-        'leon.eiswirth@outlook.de',
-        'leon.eiswirth@outlook.de'
-      ];
-      const validPassword = 'Password';
-
-      if (validEmails.includes(email) && password === validPassword) {
-        // Weiterleitung auf das Dashboard
-        window.location.href = 'dashboard.html';  // Dashboard-Seite
-      } else {
-        alert('Ungültige E-Mail oder Passwort.');
-      }
-    });
+    // Optional: Funktion, um Login bei Seite laden zu triggern
+    window.onload = showLoginForm;
   </script>
-
+  
 </body>
 </html>
