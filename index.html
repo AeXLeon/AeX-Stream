@@ -27,7 +27,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       width: 300px;
-      display: none; /* Formular anfangs ausblenden */
+      display: block;
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -88,9 +88,11 @@
   </style>
   
   <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-  <script>
+  <script type="module">
+    // Importiere Firebase-Funktionen
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
     // Firebase-Konfiguration
     const firebaseConfig = {
       apiKey: "AIzaSyAQITIKQsQs3aZCCjkIse1IlPn1kJB-HYI",
@@ -103,26 +105,18 @@
     };
 
     // Firebase initialisieren
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.getAuth(app);
-
-    // Funktion, um das Anmeldeformular anzuzeigen
-    function showLoginForm() {
-      document.querySelector('.login-container').style.display = 'block';
-    }
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
     // Funktion, um den Benutzer anzumelden
     function loginUser(email, password) {
-      firebase.signInWithEmailAndPassword(auth, email, password)
+      signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          // Weiterleitung nach erfolgreichem Login
-          window.location.href = 'dashboard.html';  // Beispielziel
+          window.location.href = 'dashboard.html';  // Weiterleitung bei Erfolg
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert('Fehler: ' + errorMessage);
+          alert('Fehler: ' + error.message);
         });
     }
 
@@ -156,10 +150,5 @@
     </form>
   </div>
 
-  <script>
-    // Optional: Funktion, um Login bei Seite laden zu triggern
-    window.onload = showLoginForm;
-  </script>
-  
 </body>
 </html>
