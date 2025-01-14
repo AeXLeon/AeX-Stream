@@ -54,6 +54,12 @@
     .menu-item:active {
       background-color: #003c6b;
     }
+
+    canvas {
+      border: 1px solid #ccc;
+      display: block;
+      margin: 20px 0;
+    }
   </style>
 </head>
 <body>
@@ -69,9 +75,19 @@
   <!-- Main Content -->
   <div class="main-content">
     <h1>Home</h1>
-    <p>Willkommen auf der Home-Seite! Hier könnte ein Menü angezeigt werden.</p>
+    <canvas id="menuCanvas" width="800" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById('menuCanvas');
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#007acc';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#fff';
+      ctx.font = '20px Arial';
+      ctx.fillText('Willkommen im Home-Menü!', 50, 50);
+    </script>
   </div>
 
 </body>
 </html>
-
