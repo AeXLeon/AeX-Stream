@@ -15,6 +15,7 @@
       font-family: Arial, sans-serif;
       display: flex;
       min-height: 100vh;
+      overflow: hidden;
     }
 
     .sidebar {
@@ -28,10 +29,7 @@
       position: fixed;
       transform: translateX(-250px);
       transition: transform 0.3s ease;
-    }
-
-    .sidebar:hover {
-      transform: translateX(0);
+      z-index: 10;
     }
 
     .sidebar h2 {
@@ -63,9 +61,10 @@
     }
 
     canvas {
-      border: 1px solid #ccc;
-      display: block;
-      margin: 20px 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
     }
 
     /* Initial state of the sidebar (hidden) */
@@ -76,6 +75,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Canvas -->
+  <canvas id="menuCanvas" width="800" height="400"></canvas>
 
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
@@ -88,37 +90,66 @@
   <!-- Main Content -->
   <div class="main-content">
     <h1>Home</h1>
-    <canvas id="menuCanvas" width="800" height="400"></canvas>
     <script>
       const canvas = document.getElementById('menuCanvas');
       const ctx = canvas.getContext('2d');
 
-      ctx.fillStyle = '#007acc';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = '#fff';
-      ctx.font = '20px Arial';
-      ctx.fillText('Willkommen im Home-Menü!', 50, 50);
-
-      // Sidebar hide/show logic
       const sidebar = document.getElementById('sidebar');
       let sidebarTimer;
 
-      // Hide the sidebar after 2 seconds of inactivity
+      // Initial Canvas
+      function drawCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#007acc';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#fff';
+        ctx.font = '20px Arial';
+        ctx.fillText('Willkommen im Home-Menü!', 50, 50);
+      }
+
+      // Sidebar hide/show logic with animation
       function hideSidebar() {
         sidebar.classList.add('hidden');
+        animateCanvas();
+      }
+
+      // Show sidebar
+      function showSidebar() {
+        sidebar.classList.remove('hidden');
+        clearTimeout(sidebarTimer);
+        animateCanvas();
+      }
+
+      // Animation to represent sidebar state
+      function animateCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#007acc';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        if (sidebar.classList.contains('hidden')) {
+          ctx.globalAlpha = 0.3;
+        } else {
+          ctx.globalAlpha = 1;
+        }
+
+        ctx.fillStyle = '#fff';
+        ctx.font = '20px Arial';
+        ctx.fillText('Willkommen im Home-Menü!', 50, 50);
       }
 
       // Show the sidebar when the mouse is over it
       sidebar.addEventListener('mouseover', () => {
-        sidebar.classList.remove('hidden');
-        clearTimeout(sidebarTimer);
+        showSidebar();
       });
 
       // Hide sidebar after mouse leaves the sidebar area
       sidebar.addEventListener('mouseout', () => {
         sidebarTimer = setTimeout(hideSidebar, 2000);
       });
+
+      // Initial canvas draw
+      drawCanvas();
     </script>
   </div>
 
