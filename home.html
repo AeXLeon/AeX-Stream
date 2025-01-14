@@ -67,12 +67,18 @@
       display: block;
       margin: 20px 0;
     }
+
+    /* Initial state of the sidebar (hidden) */
+    .sidebar.hidden {
+      transform: translateX(-250px);
+    }
+
   </style>
 </head>
 <body>
 
   <!-- Sidebar -->
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <h2>AeX Streams Dashboard</h2>
     <a href="dashboard.html" class="menu-item">Dashboard</a>
     <a href="einstellungen.html" class="menu-item">Einstellungen</a>
@@ -93,6 +99,26 @@
       ctx.fillStyle = '#fff';
       ctx.font = '20px Arial';
       ctx.fillText('Willkommen im Home-Menü!', 50, 50);
+
+      // Sidebar hide/show logic
+      const sidebar = document.getElementById('sidebar');
+      let sidebarTimer;
+
+      // Hide the sidebar after 2 seconds of inactivity
+      function hideSidebar() {
+        sidebar.classList.add('hidden');
+      }
+
+      // Show the sidebar when the mouse is over it
+      sidebar.addEventListener('mouseover', () => {
+        sidebar.classList.remove('hidden');
+        clearTimeout(sidebarTimer);
+      });
+
+      // Hide sidebar after mouse leaves the sidebar area
+      sidebar.addEventListener('mouseout', () => {
+        sidebarTimer = setTimeout(hideSidebar, 2000);
+      });
     </script>
   </div>
 
