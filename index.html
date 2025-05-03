@@ -1,154 +1,206 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anmeldung - AeX-Streams</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      position: relative;
-    }
-
-    .login-container {
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      display: block;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .login-container h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .input-field {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-
-    .input-field input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 14px;
-      color: #333;
-      transition: border-color 0.3s;
-    }
-
-    .input-field input:focus {
-      border-color: #007acc;
-      outline: none;
-    }
-
-    .login-btn {
-      width: 100%;
-      padding: 12px;
-      background-color: #007acc;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .login-btn:hover {
-      background-color: #005fa3;
-    }
-
-    .top-right {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 14px;
-      color: #333;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-  
-  <!-- Firebase SDKs -->
-  <script type="module">
-    // Importiere Firebase-Funktionen
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-
-    // Firebase-Konfiguration
-    const firebaseConfig = {
-      apiKey: "AIzaSyAQITIKQsQs3aZCCjkIse1IlPn1kJB-HYI",
-      authDomain: "aex-streams-c31c9.firebaseapp.com",
-      projectId: "aex-streams-c31c9",
-      storageBucket: "aex-streams-c31c9.firebasestorage.app",
-      messagingSenderId: "281680723328",
-      appId: "1:281680723328:web:d690dd6a270220c633d565",
-      measurementId: "G-JTQXWJDJY6"
-    };
-
-    // Firebase initialisieren
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    // Funktion, um den Benutzer anzumelden
-    function loginUser(email, password) {
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          window.location.href = 'dashboard.html';  // Weiterleitung bei Erfolg
-        })
-        .catch((error) => {
-          alert('Fehler: ' + error.message);
-        });
-    }
-
-    // Formular abschicken und anmelden
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const email = document.getElementById('email').value.toLowerCase();
-      const password = document.getElementById('password').value;
-
-      loginUser(email, password);
-    });
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site is currently offline</title>
+    <meta name="description" content="Our site is currently undergoing maintenance. We'll be back soon!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a2e;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #e94560;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.6;
+            color: #a4b0be;
+        }
+        
+        .spinner {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+        
+        .spinner-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            border-top-color: #e94560;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        .spinner-ring:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-top-color: #0f3460;
+            animation: spin 2s linear infinite;
+        }
+        
+        .spinner-ring:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border-top-color: #16213e;
+            animation: spin 2.5s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #e94560;
+            border-radius: 5px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .coming-soon {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: #a4b0be;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: rgba(233, 69, 96, 0.5);
+            border-radius: 50%;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <div class="spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+        <h1>Site is currently offline</h1>
+        <p>We are currently working on improvements for our website. Please check back later.</p>
+        <div class="status">MAINTENANCE</div>
+        <div class="coming-soon">We'll be back soon!</div>
+    </div>
 
-  <!-- Top Right "AeX Streams" -->
-  <div class="top-right">AeX Streams</div>
-
-  <!-- Login Container -->
-  <div class="login-container">
-    <h1>Anmelden</h1>
-    <form id="loginForm">
-      <div class="input-field">
-        <input type="email" id="email" placeholder="Email" required>
-      </div>
-      <div class="input-field">
-        <input type="password" id="password" placeholder="Passwort" required>
-      </div>
-      <button type="submit" class="login-btn">Anmelden</button>
-    </form>
-  </div>
-
+    <script>
+        // Particles animation
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+            createParticle();
+        }
+        
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random position
+            const x = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const size = Math.random() * 10 + 3;
+            const duration = Math.random() * 20 + 10;
+            
+            particle.style.left = `${x}%`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.opacity = Math.random() * 0.5;
+            
+            particlesContainer.appendChild(particle);
+            
+            // Remove and recreate particle when animation ends
+            setTimeout(() => {
+                particle.remove();
+                createParticle();
+            }, (delay + duration) * 1000);
+        }
+    </script>
 </body>
 </html>
